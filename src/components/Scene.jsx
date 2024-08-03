@@ -37,9 +37,13 @@ const Scene = () => {
     return (
       <Html
         center
-        className="bg-black w-screen h-screen flex justify-center items-center text-2xl text-white z-50"
+        className="bg-black w-screen h-screen flex flex-col justify-center items-center text-2xl text-white z-50"
       >
         {progress} % loaded
+        <p className="text-sm mt-5">
+          "If this is your first time visiting this site it may take some time,
+          please be patient"
+        </p>
       </Html>
     );
   }
