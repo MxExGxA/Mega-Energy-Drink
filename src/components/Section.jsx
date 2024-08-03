@@ -9,7 +9,6 @@ const Section = ({ children, className }) => {
         className="h-screen absolute top-0 object-cover left-0 mix-blend-soft-light opacity-50 z-50 pointer-events-none max-sm:hidden"
         quality={100}
         alt="noise image"
-        priority
       />
       {children}
     </section>
