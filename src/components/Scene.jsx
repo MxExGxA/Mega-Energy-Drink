@@ -29,24 +29,24 @@ const Scene = () => {
 
   return (
     <>
-      <Suspense fallback={null}>
-        <Canvas className="bg-transparent !pointer-events-none">
-          <OrthographicCamera
-            makeDefault
-            position={[0, 1.6, 100]}
-            zoom={210 * (width * 0.00055)}
-          />
-          <directionalLight intensity={0.1} position={[-300, 0, -300]} />
+      <Canvas className="bg-transparent !pointer-events-none">
+        <OrthographicCamera
+          makeDefault
+          position={[0, 1.6, 100]}
+          zoom={210 * (width * 0.00055)}
+        />
+        <directionalLight intensity={0.1} position={[-300, 0, -300]} />
 
-          <ambientLight intensity={2} />
+        <ambientLight intensity={2} />
 
-          <Environment
-            files={"/neon_photostudio_2k.exr"}
-            environmentIntensity={1}
-          />
+        <Environment
+          files={"/neon_photostudio_2k.exr"}
+          environmentIntensity={1}
+        />
+        <Suspense fallback={null}>
           <Model />
-        </Canvas>
-      </Suspense>
+        </Suspense>
+      </Canvas>
     </>
   );
 };
