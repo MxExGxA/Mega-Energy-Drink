@@ -1,7 +1,12 @@
 "use client";
 import { Canvas, useThree } from "@react-three/fiber";
 import { Model } from "../../public/Can";
-import { Environment, Html, OrthographicCamera } from "@react-three/drei";
+import {
+  Environment,
+  Html,
+  OrthographicCamera,
+  useProgress,
+} from "@react-three/drei";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Suspense, useEffect, useRef, useState } from "react";
@@ -27,23 +32,33 @@ const Scene = () => {
     setWidth(windowRef.current.innerWidth);
   }, [windowRef]);
 
+  function Loader() {
+    const { active, progress, errors, item, loaded, total } = useProgress();
+    return (
+      <Html
+        center
+        className="bg-black w-screen h-screen flex justify-center items-center text-2xl text-white z-50"
+      >
+        {progress} % loaded
+      </Html>
+    );
+  }
+
   return (
     <>
       <Canvas className="bg-transparent !pointer-events-none">
-        <OrthographicCamera
-          makeDefault
-          position={[0, 1.6, 100]}
-          zoom={210 * (width * 0.00055)}
-        />
-        <directionalLight intensity={0.1} position={[-300, 0, -300]} />
-
-        <ambientLight intensity={2} />
-
-        <Environment
-          files={"/neon_photostudio_2k.exr"}
-          environmentIntensity={1}
-        />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
+          <OrthographicCamera
+            makeDefault
+            position={[0, 1.6, 100]}
+            zoom={210 * (width * 0.00055)}
+          />
+          <directionalLight intensity={0.1} position={[-300, 0, -300]} />
+          <ambientLight intensity={2} />
+          <Environment
+            files={"/neon_photostudio_2k.exr"}
+            environmentIntensity={1}
+          />
           <Model />
         </Suspense>
       </Canvas>
