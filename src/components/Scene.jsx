@@ -41,8 +41,8 @@ const Scene = () => {
       >
         {progress} % loaded
         <p className="text-sm mt-5">
-          "If this is your first time visiting this site it may take some time,
-          please be patient"
+          &quot; If this is your first time visiting this site it may take some
+          time, please be patient &quot;
         </p>
       </Html>
     );
