@@ -12,7 +12,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/images/logo.svg" sizes="any" />
 
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
